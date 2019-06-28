@@ -15,7 +15,7 @@ diff -Naur hedgewars-src-0.9.25.orig/share/hedgewars.appdata.xml hedgewars-src-0
   <developer_name>Hedgewars Project</developer_name>
 + <launchable type="desktop-id">hedgewars.desktop</launchable>
 + <releases>
-+  <release version="0.9.25" date="2018-12-03"/>
++  <release version="1.0.0-Alpha1" date="2019-06-20"/>
 + </releases>
 + <content_rating type="oars-1.1">
 +  <content_attribute id="violence-cartoon">moderate</content_attribute>
