@@ -462,8 +462,8 @@ modules:
         done
     sources:
       - type: archive
-        url: https://github.com/hedgewars/hw/archive/9d0dfe76732325117af1646914b452d67f2a0f18.zip
-        sha256: d70ec3b533a682c3316070ddfa398fb806db26eac62df8965437e916183a6233
+        url: https://github.com/hedgewars/hw/archive/ee6560b11843cd27b6483cb61caba851696889b4.zip
+        sha256: a831db31e02d478709ea141628c48b0de0a306321ed00338a7aadc2b53255580
       - type: patch
         path: hedgewars-appdata.patch
     cleanup:
