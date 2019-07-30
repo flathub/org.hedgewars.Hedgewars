@@ -469,5 +469,8 @@ modules:
         sha256: a831db31e02d478709ea141628c48b0de0a306321ed00338a7aadc2b53255580
       - type: patch
         path: hedgewars-appdata.patch
+      - type: shell
+        commands:
+          - printf 'rev %s\nhash %s\n' 15279 7ab5cf405686 >share/version_info.txt
     cleanup:
       - /share/pixmaps
