@@ -55,6 +55,8 @@ modules:
 
   - name: physicsfs
     buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: archive
         url: https://www.icculus.org/physfs/downloads/physfs-3.0.2.tar.bz2
@@ -453,6 +455,7 @@ modules:
   - name: hedgewars
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DBUILD_ENGINE_C=1
     post-install:
       - |
