@@ -50,8 +50,11 @@ Styles and schemes:
  + CTF_Blizzard: Various minor graphical and text improvements
  + Frenzy: Change ammo slots
  + Continental supplies: Show continent in team bars
+ + King Mode: Automatically select teleport in king placement phase
+ + Racer: Invulnerability can now be disabled in game scheme
  * Balanced Random Weapon: Fix Lua errors after using Time Box
  * Racer: Fix racer ghost not getting reset after a skip
+ * Racer, TechRacer: Improve compability with game scheme
  * Space Invasion: No longer allow to set start shield above shield limit
  * Battalion, WxW: Crates drop between turns, when appropriate
  * Battalion: Sudden Death effects are now like in the base game
@@ -132,6 +135,7 @@ Game HUD:
  + Show contour of flying saucer and air mines when in highly opaque water
  + Remove visual clutter in cut scenes
  + Add setting to set default/initial zoom
+ + Render arrow pointing to hog only one if playing with wrapped map
  * Black clan color can now be used without visual problems
  * Fix last 2 characters in demo chat being missing
  * Hide most HUD elements in cinematic mode
@@ -145,7 +149,7 @@ Game HUD:
 
 Translations:
  + Complete: German, Polish
- + Major updates: Chinese, Scottish Gaelic
+ + Major updates: Chinese, Scottish Gaelic, Hungarian
  + Credits page is now translatable
  * Remove Arabic translation from release
 
@@ -166,6 +170,7 @@ Frontend:
  * Fix force-locked schemes getting unlocked when changing map types
  * Fix possible to select background-only or hidden themes indirectly by changing map type
  * Disallow slash, backslash and colon characters in team and scheme names
+ * Increase user name length from 20 to 40
 
 Sounds and voicepacks:
  + sndYoohoo has been split to sndYoohoo and sndKiss
@@ -392,7 +397,7 @@ Content creation:
 
 Translations:
  + Translations kept up-to-date: German, Polish
- + Major translation updates: Russian, Japanese, Scottish Gaelic, Ukrainian
+ + Major translation updates: Russian, Japanese, Scottish Gaelic, Ukrainian, Italian
 
 Lua API:
  * Deprecation: Setting TurnTimeLeft/ReadyTimeLeft directly is deprecated and will become useless in future. Use the setter functions below
@@ -509,7 +514,9 @@ Styles and game modes:
  + ShoppaMap: Remove script parameter “pad”
  * The Specialists: Less buggy hog switching at turn start
  * Mutant: When game ends due to all land being gone, declare the highest-scoring team the winner
+ * Battalion: Fix incorrect health boost in Highland mode
  * Battalion: Some texts in the mission panel were wrong and misleading
+ * Battalion: Fix points display not updating properly
  * Construction Mode: Remove drill strike if added by weapon scheme (it's broken)
  * Construction Mode, Racer, HedgeEditor: No longer play Incoming voice for building stuff, fix other sound problems
  * Capture the Flag: Fix many bugs caused by playing with >2 teams
@@ -922,7 +929,7 @@ Content Creation:
 
 Translations:
  + Complete translations: German, Polish
- + Major translation updates: Scottish Gaelic, Italian
+ + Major translation updates: Scottish Gaelic, Italian, Hungarian
  + Loading screen can now be translated
  + A few window titles can be translated
  + Campaign names and campaign mission names can be translated
