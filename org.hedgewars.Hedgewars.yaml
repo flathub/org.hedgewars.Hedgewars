@@ -464,9 +464,13 @@ modules:
           install -Dm0644 hedgewars_${_size}.png /app/share/icons/hicolor/${_size}x${_size}/apps/hedgewars.png || exit 1
         done
     sources:
-      - type: dir
-        path: hedgewars_src
+      - type: archive
+        url: https://github.com/hedgewars/hw/archive/140b82463dec95427b09be817c4ed0ecad72aa7f.zip
+        sha256: 0e29183d5b82de77221759ee5eeaee0110be28201fb06623398a06d7d9187c48
       - type: patch
         path: hedgewars-appdata.patch
+      - type: shell
+        commands:
+          - printf 'rev %s\nhash %s\n' 15438 e7c059ac6e54 >share/version_info.txt
     cleanup:
       - /share/pixmaps
