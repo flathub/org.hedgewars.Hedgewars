@@ -1,6 +1,6 @@
 app-id: org.hedgewars.Hedgewars
 runtime: org.kde.Platform
-runtime-version: '5.12'
+runtime-version: '5.13'
 sdk: org.kde.Sdk
 command: hedgewars
 rename-desktop-file: hedgewars.desktop
@@ -17,7 +17,7 @@ finish-args:
 modules:
   - shared-modules/glew/glew.json
 
-  - shared-modules/glu/glu-9.0.0.json
+  - shared-modules/glu/glu-9.json
 
   - name: lua51
     sources:
