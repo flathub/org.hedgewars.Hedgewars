@@ -14,6 +14,14 @@ finish-args:
   - --device=all
   - --share=network
   - --persist=.hedgewars
+cleanup:
+  - '*.a'
+  - '*.la'
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+  - /share/doc
+  - /share/man
 modules:
   - shared-modules/glew/glew.json
 
@@ -38,11 +46,6 @@ modules:
           - mv doc/luac.1 doc/luac5.1.1
     cleanup:
       - /bin
-      - /include
-      - /lib/*.a
-      - /lib/*.la
-      - /lib/pkgconfig
-      - /share/man
     buildsystem: simple
     build-commands:
       - make CFLAGS='-O2 -Wall -fPIC' linux
@@ -63,9 +66,6 @@ modules:
         sha256: 304df76206d633df5360e738b138c94e82ccf086e50ba84f456d3f8432f9f863
     cleanup:
       - /bin
-      - /include
-      - /lib/*.a
-      - /lib/pkgconfig
 
   - name: haskell
     buildsystem: simple
