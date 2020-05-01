@@ -67,7 +67,7 @@ modules:
         sha256: f0f810ff173560b60392db448455c0513b3239f48e43cb494b3733aa559621d0
     build-commands:
       - ghc-pkg check
-      - runhaskell Setup configure --prefix=/app
+      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
       - strace -f runhaskell Setup build
       - runhaskell Setup install
     cleanup:
