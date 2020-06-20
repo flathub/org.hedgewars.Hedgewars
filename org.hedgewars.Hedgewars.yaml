@@ -108,9 +108,14 @@ modules:
         sha256: c099011e07999db917e797fb5d89c31f075a562556ab99be8ab0accbf2a94db7
         only-arches:
           - aarch64
+      - type: archive
+        url: https://downloads.haskell.org/~ghc/8.10.1/ghc-8.10.1-armv7-deb9-linux.tar.xz
+        sha256: afe1bde2b0d6deb0320b9460fffe5d9427e302df85aec866b9c1458777d52b28
+        only-arches:
+          - arm
     build-commands:
       - install -d /app/lib
-      - ln -s /usr/lib/*-linux-gnu/libtinfo.so.6 /app/lib/libtinfo.so.5
+      - ln -s /usr/lib/*-linux-gnu*/libtinfo.so.6 /app/lib/libtinfo.so.5
       - ./configure --prefix=/app
       -  make install
     cleanup:
