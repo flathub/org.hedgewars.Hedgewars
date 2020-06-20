@@ -75,8 +75,8 @@ modules:
       - --without-xml
     sources:
       - type: archive
-        url: https://github.com/ImageMagick/ImageMagick/archive/7.0.10-9.tar.gz
-        sha256: ea08c7379b0ce40217656699e664d51a93eac819dde778f50ca457b110ffc5e3
+        url: https://github.com/ImageMagick/ImageMagick/archive/7.0.10-19.tar.gz
+        sha256: fe8b7706e17960c52c7cc3759ccc25b3ce29d3fa2b99035d81654450032faad6
     cleanup:
       - '*'
 
@@ -94,18 +94,18 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://downloads.haskell.org/~ghc/8.8.3/ghc-8.8.3-x86_64-deb9-linux.tar.xz
-        sha256: 42fde2ef5a143e1e6b47ae8875162ea2d4d54b06f0f7fa32ee4f0eb86f2be7ad
+        url: https://downloads.haskell.org/~ghc/8.10.1/ghc-8.10.1-x86_64-deb9-linux.tar.xz
+        sha256: d1cf7886f27af070f3b7dbe1975a78b43ef2d32b86362cbe953e79464fe70761
         only-arches:
           - x86_64
       - type: archive
-        url: https://downloads.haskell.org/~ghc/8.8.3/ghc-8.8.3-i386-deb9-linux.tar.xz
-        sha256: 441e2c7a4fc83ebf179712bd939b555cda7c6633545b7c8ac38049f9d85003ae
+        url: https://downloads.haskell.org/~ghc/8.10.1/ghc-8.10.1-i386-deb9-linux.tar.xz
+        sha256: 8b53eef2c827b5f634d72920a93c0c9dd66ea288691a2bfe28def45d3c686ee2
         only-arches:
           - i386
       - type: archive
-        url: https://downloads.haskell.org/~ghc/8.8.3/ghc-8.8.3-aarch64-deb9-linux.tar.xz
-        sha256: 2a6821d0e7326cfa7670851702924bbab3b092415ba41247c37419158327eed9
+        url: https://downloads.haskell.org/~ghc/8.10.1/ghc-8.10.1-aarch64-deb9-linux.tar.xz
+        sha256: c099011e07999db917e797fb5d89c31f075a562556ab99be8ab0accbf2a94db7
         only-arches:
           - aarch64
     build-commands:
