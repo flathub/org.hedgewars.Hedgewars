@@ -91,18 +91,24 @@ modules:
       - /bin
 
   - name: haskell
+    # Using LTS 15.10
     buildsystem: simple
     sources:
       - type: archive
-        url: https://downloads.haskell.org/~ghc/8.8.4/ghc-8.8.4-x86_64-deb9-linux.tar.xz
-        sha256: 4862559d221153caf978f4bf2c15a82c114d1e1f43b298b2ecff2ac94b586d20
+        url: https://downloads.haskell.org/~ghc/8.8.3/ghc-8.8.3-x86_64-deb9-linux.tar.xz
+        sha256: 42fde2ef5a143e1e6b47ae8875162ea2d4d54b06f0f7fa32ee4f0eb86f2be7ad
         only-arches:
           - x86_64
       - type: archive
-        url: https://downloads.haskell.org/~ghc/8.8.4/ghc-8.8.4-i386-deb9-linux.tar.xz
-        sha256: 43dd954910c9027694312cef0aabc7774d102d0422b7172802cfb72f7d5da3a0
+        url: https://downloads.haskell.org/~ghc/8.8.3/ghc-8.8.3-i386-deb9-linux.tar.xz
+        sha256: 441e2c7a4fc83ebf179712bd939b555cda7c6633545b7c8ac38049f9d85003ae
         only-arches:
           - i386
+      - type: archive
+        url: https://downloads.haskell.org/~ghc/8.8.3/ghc-8.8.3-aarch64-deb9-linux.tar.xz
+        sha256: 2a6821d0e7326cfa7670851702924bbab3b092415ba41247c37419158327eed9
+        only-arches:
+          - aarch64
     build-commands:
       - install -d /app/lib
       - ln -s /usr/lib/*-linux-gnu*/libtinfo.so.6 /app/lib/libtinfo.so.5
@@ -252,8 +258,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/resourcet-1.2.4.2/resourcet-1.2.4.2.tar.gz
-        sha256: 17f20842043ad199961a801b6efb1233b9098eb3537f8395844268f6a223eb87
+        url: https://hackage.haskell.org/package/resourcet-1.2.4/resourcet-1.2.4.tar.gz
+        sha256: 1d45f46616bfb9f2be7f913e8124262d4c0f1f7c03b046406ba791895306fb04
     build-commands:
       - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
       - runhaskell Setup build
@@ -366,8 +372,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/zlib-0.6.2.2/zlib-0.6.2.2.tar.gz
-        sha256: 04b5890dd69e992f8cd09570d81e9d5ecab19db8e82cbe47ba8e02c31c0631ba
+        url: https://hackage.haskell.org/package/zlib-0.6.2.1/zlib-0.6.2.1.tar.gz
+        sha256: f0f810ff173560b60392db448455c0513b3239f48e43cb494b3733aa559621d0
     build-commands:
       - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
       - runhaskell Setup build
