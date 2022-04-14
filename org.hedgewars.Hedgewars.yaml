@@ -75,8 +75,8 @@ modules:
       - --without-xml
     sources:
       - type: archive
-        url: https://github.com/ImageMagick/ImageMagick/archive/7.1.0-6.tar.gz
-        sha256: 0e925a1e6192bf2908bfcf1a99eec271f36844663ab3b6d2690cdaaa11b928c7
+        url: https://github.com/ImageMagick/ImageMagick/archive/7.1.0-29.tar.gz
+        sha256: 889be185fd17a9b9b3d4090e28aecdec289a4f690964a7964b4f893c7a8ec21c
     cleanup:
       - '*'
 
@@ -91,22 +91,22 @@ modules:
       - /bin
 
   - name: haskell
-    # Using LTS 18.8
+    # Using LTS 18.28
     buildsystem: simple
     sources:
       - type: archive
-        url: https://downloads.haskell.org/~ghc/8.10.6/ghc-8.10.6-x86_64-deb10-linux.tar.xz
-        sha256: 95be925e310b8c419e1099d620a727a1ca2d8c918f33eb905a8221d7eb16467b
+        url: https://downloads.haskell.org/~ghc/8.10.7/ghc-8.10.7-x86_64-deb10-linux.tar.xz
+        sha256: a13719bca87a0d3ac0c7d4157a4e60887009a7f1a8dbe95c4759ec413e086d30
         only-arches:
           - x86_64
       - type: archive
-        url: https://downloads.haskell.org/~ghc/8.10.6/ghc-8.10.6-aarch64-deb10-linux.tar.xz
-        sha256: 1ea27a7776e3cbd0881ecf2eb03eb5176e2cef177a12271a1c33417f4fa48a59
+        url: https://downloads.haskell.org/~ghc/8.10.7/ghc-8.10.7-aarch64-deb10-linux.tar.xz
+        sha256: fad2417f9b295233bf8ade79c0e6140896359e87be46cb61cd1d35863d9d0e55
         only-arches:
           - aarch64
       - type: archive
-        url: https://downloads.haskell.org/~ghc/8.10.6/ghc-8.10.6-armv7-deb10-linux.tar.xz
-        sha256: d54de8306aa8b33afabf2ac94408e1f82c8e982a2a3346168c071b92bdb464c0
+        url: https://downloads.haskell.org/~ghc/8.10.7/ghc-8.10.7-armv7-deb10-linux.tar.xz
+        sha256: 3949c31bdf7d3b4afb765ea8246bca4ca9707c5d988d9961a244f0da100956a2
         only-arches:
           - arm
     build-commands:
@@ -119,8 +119,11 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/primitive-0.7.2.0/primitive-0.7.2.0.tar.gz
-        sha256: 9177859782b92b3a096a706c074ec2812bcf75f93f01d1deaac5c2ce05ae4cb9
+        url: https://hackage.haskell.org/package/primitive-0.7.3.0/primitive-0.7.3.0.tar.gz
+        sha256: 3c0cfda67f1ee6f7f65108ad6f973b5bbb35ddba34b3c87746a7448f787501dc
+      - type: shell
+        commands:
+          - echo -e "import Distribution.Simple\nmain = defaultMain" > Setup.hs
     build-commands:
       - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
       - runhaskell Setup build
@@ -132,8 +135,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/vector-0.12.3.0/vector-0.12.3.0.tar.gz
-        sha256: 15f818505adda63e7f484ecdf92dbb3c1ec76a9def004c9424db8fa6bc41b703
+        url: https://hackage.haskell.org/package/vector-0.12.3.1/vector-0.12.3.1.tar.gz
+        sha256: fb4a53c02bd4d7fdf155c0604da9a5bb0f3b3bfce5d9960aea11c2ae235b9f35
     build-commands:
       - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
       - runhaskell Setup build
@@ -188,8 +191,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/unordered-containers-0.2.14.0/unordered-containers-0.2.14.0.tar.gz
-        sha256: a10f48a94cef1fab72d2a404c7d541a3cda54ab2f1321872658aca7e5e9d8867
+        url: https://hackage.haskell.org/package/unordered-containers-0.2.16.0/unordered-containers-0.2.16.0.tar.gz
+        sha256: bccf68bcf262a149e8cdb25bc4a87d59642faa772ec4db384e16ac8f4f3f49ef
     build-commands:
       - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
       - runhaskell Setup build
@@ -214,8 +217,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/mono-traversable-1.0.15.1/mono-traversable-1.0.15.1.tar.gz
-        sha256: c2df5b79ed2f88f2ee313e57c1d591d4463788e20d39e439297eec5ba5835ddf
+        url: https://hackage.haskell.org/package/mono-traversable-1.0.15.3/mono-traversable-1.0.15.3.tar.gz
+        sha256: 98b220f3313d74227a4249210c8818e839678343e62b3ebb1b8c867cf2b974b7
     build-commands:
       - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
       - runhaskell Setup build
@@ -256,8 +259,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/conduit-1.3.4.1/conduit-1.3.4.1.tar.gz
-        sha256: 85743b8d5f2d5779ccb7459b5a919c5786707af23fe7a065d281ee8e6dc226f1
+        url: https://hackage.haskell.org/package/conduit-1.3.4.2/conduit-1.3.4.2.tar.gz
+        sha256: 2cb9832f27c7cd50daed1309f688afc4da1bd49697cbeda8ec3f81ab0bcf2197
     build-commands:
       - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
       - runhaskell Setup build
@@ -343,8 +346,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/entropy-0.4.1.6/entropy-0.4.1.6.tar.gz
-        sha256: adc759ff756a6d71a450422ba511177632f43a33bf673901fd2334f53ef8bf62
+        url: https://hackage.haskell.org/package/entropy-0.4.1.7/entropy-0.4.1.7.tar.gz
+        sha256: a9063dfeb566b443e6ea101fbcc22f23d8cec8b9600bfd1378b0ecadf04be9ee
     build-commands:
       - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
       - runhaskell Setup build
@@ -369,8 +372,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/splitmix-0.1.0.3/splitmix-0.1.0.3.tar.gz
-        sha256: 46009f4b000c9e6613377767b8718bf38476469f2a8e2162d98cc246882d5a35
+        url: https://hackage.haskell.org/package/splitmix-0.1.0.4/splitmix-0.1.0.4.tar.gz
+        sha256: 6d065402394e7a9117093dbb4530a21342c9b1e2ec509516c8a8d0ffed98ecaa
     build-commands:
       - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
       - runhaskell Setup build
@@ -395,8 +398,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/regex-base-0.94.0.1/regex-base-0.94.0.1.tar.gz
-        sha256: 71b1d96fff201f31fe8cd4532f056aca03a21cd486890256dc3007dd73adedd9
+        url: https://hackage.haskell.org/package/regex-base-0.94.0.2/regex-base-0.94.0.2.tar.gz
+        sha256: 7b99408f580f5bb67a1c413e0bc735886608251331ad36322020f2169aea2ef1
     build-commands:
       - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
       - runhaskell Setup build
@@ -408,8 +411,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/regex-tdfa-1.3.1.1/regex-tdfa-1.3.1.1.tar.gz
-        sha256: b1be517f6eaaa82bcb733919c58a111ce2acb03cc8fe962b15b64a32c3c059d7
+        url: https://hackage.haskell.org/package/regex-tdfa-1.3.1.2/regex-tdfa-1.3.1.2.tar.gz
+        sha256: c47a78c9da532ba0883868a1e34427318cba3cccc8e42f995834c74eea286a62
       - type: shell
         commands:
           - echo -e "import Distribution.Simple\nmain = defaultMain" > Setup.hs
