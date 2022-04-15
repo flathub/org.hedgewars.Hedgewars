@@ -111,9 +111,13 @@ modules:
           - arm
     build-commands:
       - ./configure --prefix=/app
-      -  make install
+      - make install
     cleanup:
       - '*'
+    x-haskell-package-build-commands: &haskell_package_build_commands
+      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
+      - runhaskell Setup build
+      - runhaskell Setup install
 
   - name: haskell-primitive
     buildsystem: simple
@@ -123,11 +127,8 @@ modules:
         sha256: 3c0cfda67f1ee6f7f65108ad6f973b5bbb35ddba34b3c87746a7448f787501dc
       - type: shell
         commands:
-          - echo -e "import Distribution.Simple\nmain = defaultMain" > Setup.hs
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+          - echo -e 'import Distribution.Simple\nmain = defaultMain' > Setup.hs
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -137,10 +138,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/vector-0.12.3.1/vector-0.12.3.1.tar.gz
         sha256: fb4a53c02bd4d7fdf155c0604da9a5bb0f3b3bfce5d9960aea11c2ae235b9f35
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -151,10 +149,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/network-2.8.0.1/network-2.8.0.1.tar.gz
         sha256: 61f55dbfed0f0af721a8ea36079e9309fcc5a1be20783b44ae500d9e4399a846
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -167,10 +162,7 @@ modules:
       - type: shell
         commands:
           - sed -i 's/< *4\.14/<5/' *.cabal
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -180,10 +172,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/split-0.2.3.4/split-0.2.3.4.tar.gz
         sha256: 271fe5104c9f40034aa9a1aad6269bcecc9454bc5a57c247e69e17de996c1f2a
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -193,10 +182,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/unordered-containers-0.2.16.0/unordered-containers-0.2.16.0.tar.gz
         sha256: bccf68bcf262a149e8cdb25bc4a87d59642faa772ec4db384e16ac8f4f3f49ef
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -206,10 +192,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/vector-algorithms-0.8.0.4/vector-algorithms-0.8.0.4.tar.gz
         sha256: 76176a56778bf30a275b1089ee6db24ec6c67d92525145f8dfe215b80137af3b
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -219,10 +202,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/mono-traversable-1.0.15.3/mono-traversable-1.0.15.3.tar.gz
         sha256: 98b220f3313d74227a4249210c8818e839678343e62b3ebb1b8c867cf2b974b7
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -235,10 +215,7 @@ modules:
       - type: shell
         commands:
           - sed -i 's/< *4\.14/<5/' *.cabal
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -248,10 +225,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/resourcet-1.2.4.3/resourcet-1.2.4.3.tar.gz
         sha256: 054152fec5cdc044dd9310c37e548913bcec67ec4e84998a1419a8c067b43b7f
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -261,10 +235,8 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/conduit-1.3.4.2/conduit-1.3.4.2.tar.gz
         sha256: 2cb9832f27c7cd50daed1309f688afc4da1bd49697cbeda8ec3f81ab0bcf2197
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -276,11 +248,8 @@ modules:
         sha256: 4940a19fe9c5e9b08a9f139a0806a30b956d007efa973f3763bed3165154afd9
       - type: shell
         commands:
-          - echo -e "import Distribution.Simple\nmain = defaultMain" > Setup.hs
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+          - echo -e 'import Distribution.Simple\nmain = defaultMain' > Setup.hs
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -293,10 +262,7 @@ modules:
       - type: shell
         commands:
           - sed -i 's/< *4\.9/<5/' *.cabal
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -309,10 +275,7 @@ modules:
       - type: shell
         commands:
           - sed -i 's/< *4\.14/<5/' *.cabal
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -322,10 +285,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/utf8-string-1.0.2/utf8-string-1.0.2.tar.gz
         sha256: ee48deada7600370728c4156cb002441de770d0121ae33a68139a9ed9c19b09a
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -335,10 +295,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/SHA-1.6.4.4/SHA-1.6.4.4.tar.gz
         sha256: 6bd950df6b11a3998bb1452d875d2da043ee43385459afc5f16d471d25178b44
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -348,10 +305,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/entropy-0.4.1.7/entropy-0.4.1.7.tar.gz
         sha256: a9063dfeb566b443e6ea101fbcc22f23d8cec8b9600bfd1378b0ecadf04be9ee
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -361,10 +315,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/zlib-0.6.2.3/zlib-0.6.2.3.tar.gz
         sha256: 807f6bddf9cb3c517ce5757d991dde3c7e319953a22c86ee03d74534bd5abc88
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -374,10 +325,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/splitmix-0.1.0.4/splitmix-0.1.0.4.tar.gz
         sha256: 6d065402394e7a9117093dbb4530a21342c9b1e2ec509516c8a8d0ffed98ecaa
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -387,10 +335,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/random-1.2.0/random-1.2.0.tar.gz
         sha256: e4519cf7c058bfd5bdbe4acc782284acc9e25e74487208619ca83cbcd63fb9de
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -400,10 +345,7 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/regex-base-0.94.0.2/regex-base-0.94.0.2.tar.gz
         sha256: 7b99408f580f5bb67a1c413e0bc735886608251331ad36322020f2169aea2ef1
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -415,11 +357,8 @@ modules:
         sha256: c47a78c9da532ba0883868a1e34427318cba3cccc8e42f995834c74eea286a62
       - type: shell
         commands:
-          - echo -e "import Distribution.Simple\nmain = defaultMain" > Setup.hs
-    build-commands:
-      - runhaskell Setup configure --prefix=/app --extra-lib-dirs=/app/lib
-      - runhaskell Setup build
-      - runhaskell Setup install
+          - echo -e 'import Distribution.Simple\nmain = defaultMain' > Setup.hs
+    build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
 
@@ -444,6 +383,6 @@ modules:
         commands:
           - sed -i 's|APPEND haskell_flags|\0 "-L/app/lib"|' CMakeLists.txt
           - | # Fix compatibility with QT 5.15
-            sed -i "/#include <QSizePolicy>/a #include <QPainterPath>" QTfrontend/ui/page/pagegamestats.cpp
+            sed -i '/#include <QSizePolicy>/a #include <QPainterPath>' QTfrontend/ui/page/pagegamestats.cpp
     cleanup:
       - /share/pixmaps
