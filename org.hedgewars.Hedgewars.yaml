@@ -104,11 +104,6 @@ modules:
         sha256: fad2417f9b295233bf8ade79c0e6140896359e87be46cb61cd1d35863d9d0e55
         only-arches:
           - aarch64
-      - type: archive
-        url: https://downloads.haskell.org/~ghc/8.10.7/ghc-8.10.7-armv7-deb10-linux.tar.xz
-        sha256: 3949c31bdf7d3b4afb765ea8246bca4ca9707c5d988d9961a244f0da100956a2
-        only-arches:
-          - arm
     build-commands:
       - ./configure --prefix=/app
       - make install
