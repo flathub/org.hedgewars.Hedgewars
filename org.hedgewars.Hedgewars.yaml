@@ -1,7 +1,9 @@
 app-id: org.hedgewars.Hedgewars
 runtime: org.kde.Platform
-runtime-version: '5.15'
+runtime-version: '5.15-21.08'
 sdk: org.kde.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm13
 command: hedgewars
 rename-desktop-file: hedgewars.desktop
 rename-icon: hedgewars
@@ -14,6 +16,11 @@ finish-args:
   - --device=all
   - --share=network
   - --persist=.hedgewars
+build-options:
+  arch:
+    aarch64: # Required by Haskell
+      append-path: /usr/lib/sdk/llvm13/bin
+      append-ld-library-path: /usr/lib/sdk/llvm13/lib
 cleanup:
   - '*.a'
   - '*.la'
@@ -252,7 +259,6 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/conduit-1.3.4.2/conduit-1.3.4.2.tar.gz
         sha256: 2cb9832f27c7cd50daed1309f688afc4da1bd49697cbeda8ec3f81ab0bcf2197
-
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
