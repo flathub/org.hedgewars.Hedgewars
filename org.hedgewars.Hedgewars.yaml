@@ -110,8 +110,6 @@ modules:
       - '*'
 
   - name: numa
-    only-arches:
-      - aarch64
     sources:
       - type: archive
         url: https://github.com/numactl/numactl/releases/download/v2.0.14/numactl-2.0.14.tar.gz
