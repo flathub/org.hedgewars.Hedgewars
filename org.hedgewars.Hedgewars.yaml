@@ -44,6 +44,10 @@ modules:
       - type: archive
         url: https://www.icculus.org/physfs/downloads/physfs-3.0.2.tar.bz2
         sha256: 304df76206d633df5360e738b138c94e82ccf086e50ba84f456d3f8432f9f863
+        x-checker-data:
+          type: html
+          url: https://www.icculus.org/physfs/downloads/
+          pattern: '>(physfs-([\d.]+)\.tar(?:\.[^<]*)?)<'
     cleanup:
       - /bin
 
@@ -84,6 +88,11 @@ modules:
       - type: archive
         url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-32.tar.gz
         sha256: 223d92c1de54bda8c014469cc3b3f30d18afabdd3c004f046cf30999936795dc
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest
+          version-query: '.tag_name'
+          url-query: '"https://github.com/ImageMagick/ImageMagick/archive/refs/tags/" + $version + ".tar.gz"'
     cleanup:
       - '*'
 
@@ -95,11 +104,21 @@ modules:
         sha256: 5adac308a5534b6a76446d8311fc340747cbb7edeaacfe6b651493ff3fe31e83
         only-arches:
           - x86_64
+        x-checker-data:
+          type: html
+          url: https://www.freepascal.org/download.html
+          version-pattern: 'The latest release is <b>([^<]+)</b>'
+          url-template: https://sourceforge.net/projects/freepascal/files/Linux/$version/fpc-$version.x86_64-linux.tar
       - type: archive
         url: https://sourceforge.net/projects/freepascal/files/Linux/3.2.2/fpc-3.2.2.aarch64-linux.tar
         sha256: b39470f9b6b5b82f50fc8680a5da37d2834f2129c65c24c5628a80894d565451
         only-arches:
           - aarch64
+        x-checker-data:
+          type: html
+          url: https://www.freepascal.org/download.html
+          version-pattern: 'The latest release is <b>([^<]+)</b>'
+          url-template: https://sourceforge.net/projects/freepascal/files/Linux/$version/fpc-$version.aarch64-linux.tar
     build-commands:
       - install -d /app/bin
       - printf '%s\n' /app n n | ./install.sh
@@ -114,6 +133,11 @@ modules:
       - type: archive
         url: https://github.com/numactl/numactl/releases/download/v2.0.14/numactl-2.0.14.tar.gz
         sha256: 826bd148c1b6231e1284e42a4db510207747484b112aee25ed6b1078756bcff6
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/numactl/numactl/releases/latest
+          version-query: '.tag_name'
+          url-query: '.assets[] | select(.name == "numactl-" + ($version | sub("^v"; "")) + ".tar.gz").browser_download_url'
     cleanup:
       - /bin
 
@@ -124,11 +148,21 @@ modules:
       - type: archive
         url: https://downloads.haskell.org/~ghc/8.10.7/ghc-8.10.7-x86_64-deb10-linux.tar.xz
         sha256: a13719bca87a0d3ac0c7d4157a4e60887009a7f1a8dbe95c4759ec413e086d30
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>ghc-([\d.]+)<'
+          url-template: https://downloads.haskell.org/~ghc/$version/ghc-$version-x86_64-deb10-linux.tar.xz
         only-arches:
           - x86_64
       - type: archive
         url: https://downloads.haskell.org/~ghc/8.10.7/ghc-8.10.7-aarch64-deb10-linux.tar.xz
         sha256: fad2417f9b295233bf8ade79c0e6140896359e87be46cb61cd1d35863d9d0e55
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>ghc-([\d.]+)<'
+          url-template: https://downloads.haskell.org/~ghc/$version/ghc-$version-aarch64-deb10-linux.tar.xz
         only-arches:
           - aarch64
     build-commands:
@@ -147,6 +181,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/primitive-0.7.3.0/primitive-0.7.3.0.tar.gz
         sha256: 3c0cfda67f1ee6f7f65108ad6f973b5bbb35ddba34b3c87746a7448f787501dc
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>primitive-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/primitive-$version/primitive-$version.tar.gz
       - type: shell
         commands:
           - echo -e 'import Distribution.Simple\nmain = defaultMain' > Setup.hs
@@ -160,6 +199,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/vector-0.12.3.1/vector-0.12.3.1.tar.gz
         sha256: fb4a53c02bd4d7fdf155c0604da9a5bb0f3b3bfce5d9960aea11c2ae235b9f35
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>vector-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/vector-$version/vector-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -181,6 +225,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/hashable-1.3.0.0/hashable-1.3.0.0.tar.gz
         sha256: 822e5413fbccca6ae884d3aba4066422c8b5d58d23d18b9ecb5c03273bb19ab4
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>hashable-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/hashable-$version/hashable-$version.tar.gz
       - type: shell
         commands:
           - sed -i 's/< *4\.14/<5/' *.cabal
@@ -194,6 +243,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/split-0.2.3.4/split-0.2.3.4.tar.gz
         sha256: 271fe5104c9f40034aa9a1aad6269bcecc9454bc5a57c247e69e17de996c1f2a
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>split-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/split-$version/split-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -204,6 +258,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/unordered-containers-0.2.16.0/unordered-containers-0.2.16.0.tar.gz
         sha256: bccf68bcf262a149e8cdb25bc4a87d59642faa772ec4db384e16ac8f4f3f49ef
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>unordered-containers-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/unordered-containers-$version/unordered-containers-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -214,6 +273,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/vector-algorithms-0.8.0.4/vector-algorithms-0.8.0.4.tar.gz
         sha256: 76176a56778bf30a275b1089ee6db24ec6c67d92525145f8dfe215b80137af3b
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>vector-algorithms-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/vector-algorithms-$version/vector-algorithms-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -224,6 +288,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/mono-traversable-1.0.15.3/mono-traversable-1.0.15.3.tar.gz
         sha256: 98b220f3313d74227a4249210c8818e839678343e62b3ebb1b8c867cf2b974b7
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>mono-traversable-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/mono-traversable-$version/mono-traversable-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -234,6 +303,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/unliftio-core-0.2.0.1/unliftio-core-0.2.0.1.tar.gz
         sha256: 919f0d1297ea2f5373118553c1df2a9405d8b9e31a8307e829da67d4953c299a
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>unliftio-core-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/unliftio-core-$version/unliftio-core-$version.tar.gz
       - type: shell
         commands:
           - sed -i 's/< *4\.14/<5/' *.cabal
@@ -247,6 +321,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/resourcet-1.2.4.3/resourcet-1.2.4.3.tar.gz
         sha256: 054152fec5cdc044dd9310c37e548913bcec67ec4e84998a1419a8c067b43b7f
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>resourcet-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/resourcet-$version/resourcet-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -257,6 +336,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/conduit-1.3.4.2/conduit-1.3.4.2.tar.gz
         sha256: 2cb9832f27c7cd50daed1309f688afc4da1bd49697cbeda8ec3f81ab0bcf2197
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>conduit-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/conduit-$version/conduit-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -267,6 +351,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/sandi-0.5/sandi-0.5.tar.gz
         sha256: 4940a19fe9c5e9b08a9f139a0806a30b956d007efa973f3763bed3165154afd9
+        x-checker-data:
+          type: html
+          url: https://hackage.haskell.org/package/sandi
+          version-pattern: '"([\d.]+)":'
+          url-template: https://hackage.haskell.org/package/sandi-$version/sandi-$version.tar.gz
       - type: shell
         commands:
           - echo -e 'import Distribution.Simple\nmain = defaultMain' > Setup.hs
@@ -280,6 +369,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/old-locale-1.0.0.7/old-locale-1.0.0.7.tar.gz
         sha256: dbaf8bf6b888fb98845705079296a23c3f40ee2f449df7312f7f7f1de18d7b50
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>old-locale-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/old-locale-$version/old-locale-$version.tar.gz
       - type: shell
         commands:
           - sed -i 's/< *4\.9/<5/' *.cabal
@@ -293,6 +387,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/hslogger-1.3.1.0/hslogger-1.3.1.0.tar.gz
         sha256: 7f2364f6c0b9c5b85a257267a335816126ef2471c817a42797a5d3c57acaca5b
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>hslogger-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/hslogger-$version/hslogger-$version.tar.gz
       - type: shell
         commands:
           - sed -i 's/< *4\.14/<5/' *.cabal
@@ -306,6 +405,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/utf8-string-1.0.2/utf8-string-1.0.2.tar.gz
         sha256: ee48deada7600370728c4156cb002441de770d0121ae33a68139a9ed9c19b09a
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>utf8-string-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/utf8-string-$version/utf8-string-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -316,6 +420,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/SHA-1.6.4.4/SHA-1.6.4.4.tar.gz
         sha256: 6bd950df6b11a3998bb1452d875d2da043ee43385459afc5f16d471d25178b44
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>SHA-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/SHA-$version/SHA-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -326,6 +435,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/entropy-0.4.1.7/entropy-0.4.1.7.tar.gz
         sha256: a9063dfeb566b443e6ea101fbcc22f23d8cec8b9600bfd1378b0ecadf04be9ee
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>entropy-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/entropy-$version/entropy-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -336,6 +450,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/zlib-0.6.2.3/zlib-0.6.2.3.tar.gz
         sha256: 807f6bddf9cb3c517ce5757d991dde3c7e319953a22c86ee03d74534bd5abc88
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>zlib-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/zlib-$version/zlib-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -346,6 +465,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/splitmix-0.1.0.4/splitmix-0.1.0.4.tar.gz
         sha256: 6d065402394e7a9117093dbb4530a21342c9b1e2ec509516c8a8d0ffed98ecaa
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>splitmix-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/splitmix-$version/splitmix-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -356,6 +480,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/random-1.2.0/random-1.2.0.tar.gz
         sha256: e4519cf7c058bfd5bdbe4acc782284acc9e25e74487208619ca83cbcd63fb9de
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>random-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/random-$version/random-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -366,6 +495,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/regex-base-0.94.0.2/regex-base-0.94.0.2.tar.gz
         sha256: 7b99408f580f5bb67a1c413e0bc735886608251331ad36322020f2169aea2ef1
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>regex-base-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/regex-base-$version/regex-base-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -376,6 +510,11 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/regex-tdfa-1.3.1.2/regex-tdfa-1.3.1.2.tar.gz
         sha256: c47a78c9da532ba0883868a1e34427318cba3cccc8e42f995834c74eea286a62
+        x-checker-data:
+          type: html
+          url: https://www.stackage.org/lts
+          version-pattern: '>regex-tdfa-([\d.]+)<'
+          url-template: https://hackage.haskell.org/package/regex-tdfa-$version/regex-tdfa-$version.tar.gz
       - type: shell
         commands:
           - echo -e 'import Distribution.Simple\nmain = defaultMain' > Setup.hs
@@ -397,6 +536,7 @@ modules:
       - type: archive
         url: https://github.com/hedgewars/hw/archive/140b82463dec95427b09be817c4ed0ecad72aa7f.zip
         sha256: 0e29183d5b82de77221759ee5eeaee0110be28201fb06623398a06d7d9187c48
+        # IMPORTANT: Manual update of hedgewars-appdata.patch and version_info.txt required
       - type: patch
         path: hedgewars-appdata.patch
       - type: shell
