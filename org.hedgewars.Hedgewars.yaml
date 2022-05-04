@@ -47,7 +47,7 @@ modules:
         x-checker-data:
           type: html
           url: https://www.icculus.org/physfs/downloads/
-          pattern: '>(physfs-([\d.]+)\.tar(?:\.[^<]*)?)<'
+          pattern: '>(physfs-([\d.]+)\.tar[^<]*)<'
     cleanup:
       - /bin
 
@@ -215,11 +215,6 @@ modules:
       - type: archive
         url: https://hackage.haskell.org/package/network-2.8.0.1/network-2.8.0.1.tar.gz
         sha256: 61f55dbfed0f0af721a8ea36079e9309fcc5a1be20783b44ae500d9e4399a846
-        x-checker-data:
-          type: html
-          url: https://hackage.haskell.org/package/network
-          version-pattern: '"(2(?:\.[\d.]+)?)":'
-          url-template: https://hackage.haskell.org/package/network-$version/network-$version.tar.gz
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -357,10 +352,10 @@ modules:
         url: https://hackage.haskell.org/package/sandi-0.5/sandi-0.5.tar.gz
         sha256: 4940a19fe9c5e9b08a9f139a0806a30b956d007efa973f3763bed3165154afd9
         x-checker-data:
-          type: html
+          type: json
           url: https://hackage.haskell.org/package/sandi
-          version-pattern: '"([\d.]+)":'
-          url-template: https://hackage.haskell.org/package/sandi-$version/sandi-$version.tar.gz
+          version-query: 'keys | sort_by(split(".") | map(tonumber))[-1]'
+          url-query: '"https://hackage.haskell.org/package/sandi-" + $version + "/sandi-" + $version + ".tar.gz"'
       - type: shell
         commands:
           - echo -e 'import Distribution.Simple\nmain = defaultMain' > Setup.hs
