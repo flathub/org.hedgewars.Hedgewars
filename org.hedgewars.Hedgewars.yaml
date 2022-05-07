@@ -86,8 +86,8 @@ modules:
       - --without-xml
     sources:
       - type: archive
-        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-32.tar.gz
-        sha256: 223d92c1de54bda8c014469cc3b3f30d18afabdd3c004f046cf30999936795dc
+        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-33.tar.gz
+        sha256: dd18045614c19d11739311b207688c2cd480ed309d466685f1811f7a11df98ee
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest
@@ -142,12 +142,12 @@ modules:
       - /bin
 
   - name: haskell
-    # Using LTS 18.28
+    # Using LTS 19.6
     buildsystem: simple
     sources:
       - type: archive
-        url: https://downloads.haskell.org/~ghc/8.10.7/ghc-8.10.7-x86_64-deb10-linux.tar.xz
-        sha256: a13719bca87a0d3ac0c7d4157a4e60887009a7f1a8dbe95c4759ec413e086d30
+        url: https://downloads.haskell.org/~ghc/9.0.2/ghc-9.0.2-x86_64-deb10-linux.tar.xz
+        sha256: 5d0b9414b10cfb918453bcd01c5ea7a1824fe95948b08498d6780f20ba247afc
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -156,8 +156,8 @@ modules:
         only-arches:
           - x86_64
       - type: archive
-        url: https://downloads.haskell.org/~ghc/8.10.7/ghc-8.10.7-aarch64-deb10-linux.tar.xz
-        sha256: fad2417f9b295233bf8ade79c0e6140896359e87be46cb61cd1d35863d9d0e55
+        url: https://downloads.haskell.org/~ghc/9.0.2/ghc-9.0.2-aarch64-deb10-linux.tar.xz
+        sha256: cb016344c70a872738a24af60bd15d3b18749087b9905c1b3f1b1549dc01f46d
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -223,8 +223,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/hashable-1.3.0.0/hashable-1.3.0.0.tar.gz
-        sha256: 822e5413fbccca6ae884d3aba4066422c8b5d58d23d18b9ecb5c03273bb19ab4
+        url: https://hackage.haskell.org/package/hashable-1.3.5.0/hashable-1.3.5.0.tar.gz
+        sha256: baaad82cd4271b197016bdbe76f22d5c3d3913fe38534cec7d817db9bae19886
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -232,7 +232,7 @@ modules:
           url-template: https://hackage.haskell.org/package/hashable-$version/hashable-$version.tar.gz
       - type: shell
         commands:
-          - sed -i 's/< *4\.14/<5/' *.cabal
+          - sed -i 's/== *1\.0\.\*/==1.*/' *.cabal
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -248,6 +248,9 @@ modules:
           url: https://www.stackage.org/lts
           version-pattern: '>split-([\d.]+)<'
           url-template: https://hackage.haskell.org/package/split-$version/split-$version.tar.gz
+      - type: shell
+        commands:
+          - sed -i 's/< *4\.15/<5/' *.cabal
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -256,8 +259,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/unordered-containers-0.2.16.0/unordered-containers-0.2.16.0.tar.gz
-        sha256: bccf68bcf262a149e8cdb25bc4a87d59642faa772ec4db384e16ac8f4f3f49ef
+        url: https://hackage.haskell.org/package/unordered-containers-0.2.17.0/unordered-containers-0.2.17.0.tar.gz
+        sha256: c49e3a6e0b6aae68c035b163e54f3521d1d65d0a3543fa46eaeddc97b4375a17
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -478,8 +481,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/random-1.2.0/random-1.2.0.tar.gz
-        sha256: e4519cf7c058bfd5bdbe4acc782284acc9e25e74487208619ca83cbcd63fb9de
+        url: https://hackage.haskell.org/package/random-1.2.1/random-1.2.1.tar.gz
+        sha256: 265c768fc5f2ca53cde6a87e706b4448cad474c3deece933c103f24453661457
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
