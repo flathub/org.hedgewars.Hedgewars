@@ -1,6 +1,6 @@
 app-id: org.hedgewars.Hedgewars
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm13
@@ -91,8 +91,9 @@ modules:
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest
-          version-query: '.tag_name'
-          url-query: '"https://github.com/ImageMagick/ImageMagick/archive/refs/tags/" + $version + ".tar.gz"'
+          version-query: .tag_name
+          url-query: '"https://github.com/ImageMagick/ImageMagick/archive/refs/tags/"
+            + $version + ".tar.gz"'
     cleanup:
       - '*'
 
@@ -107,7 +108,7 @@ modules:
         x-checker-data:
           type: html
           url: https://www.freepascal.org/download.html
-          version-pattern: 'The latest release is <b>([^<]+)</b>'
+          version-pattern: The latest release is <b>([^<]+)</b>
           url-template: https://sourceforge.net/projects/freepascal/files/Linux/$version/fpc-$version.x86_64-linux.tar
       - type: archive
         url: https://sourceforge.net/projects/freepascal/files/Linux/3.2.2/fpc-3.2.2.aarch64-linux.tar
@@ -117,12 +118,12 @@ modules:
         x-checker-data:
           type: html
           url: https://www.freepascal.org/download.html
-          version-pattern: 'The latest release is <b>([^<]+)</b>'
+          version-pattern: The latest release is <b>([^<]+)</b>
           url-template: https://sourceforge.net/projects/freepascal/files/Linux/$version/fpc-$version.aarch64-linux.tar
     build-commands:
       - install -d /app/bin
       - printf '%s\n' /app n n | ./install.sh
-      - | # Install config
+      - |
         LIBDIR="/app/lib/fpc/$(fpc -iV)"
         "${LIBDIR}/samplecfg" "${LIBDIR}" /app/lib/fpc/etc
     cleanup:
@@ -136,8 +137,9 @@ modules:
         x-checker-data:
           type: json
           url: https://api.github.com/repos/numactl/numactl/releases/latest
-          version-query: '.tag_name'
-          url-query: '.assets[] | select(.name == "numactl-" + ($version | sub("^v"; "")) + ".tar.gz").browser_download_url'
+          version-query: .tag_name
+          url-query: .assets[] | select(.name == "numactl-" + ($version | sub("^v";
+            "")) + ".tar.gz").browser_download_url
     cleanup:
       - /bin
 
@@ -322,8 +324,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/resourcet-1.2.4.3/resourcet-1.2.4.3.tar.gz
-        sha256: 054152fec5cdc044dd9310c37e548913bcec67ec4e84998a1419a8c067b43b7f
+        url: https://hackage.haskell.org/package/resourcet-1.2.5/resourcet-1.2.5.tar.gz
+        sha256: f67c698a88dda8e25ce3cb6c507c0edf7bb3bf05150cd0ede85e7cdab246492e
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -357,8 +359,9 @@ modules:
         x-checker-data:
           type: json
           url: https://hackage.haskell.org/package/sandi
-          version-query: 'keys | sort_by(split(".") | map(tonumber))[-1]'
-          url-query: '"https://hackage.haskell.org/package/sandi-" + $version + "/sandi-" + $version + ".tar.gz"'
+          version-query: keys | sort_by(split(".") | map(tonumber))[-1]
+          url-query: '"https://hackage.haskell.org/package/sandi-" + $version + "/sandi-"
+            + $version + ".tar.gz"'
       - type: shell
         commands:
           - echo -e 'import Distribution.Simple\nmain = defaultMain' > Setup.hs
@@ -451,8 +454,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/zlib-0.6.2.3/zlib-0.6.2.3.tar.gz
-        sha256: 807f6bddf9cb3c517ce5757d991dde3c7e319953a22c86ee03d74534bd5abc88
+        url: https://hackage.haskell.org/package/zlib-0.6.3.0/zlib-0.6.3.0.tar.gz
+        sha256: 9eaa989ad4534438b5beb51c1d3a4c8f6a088fdff0b259a5394fbf39aaee04da
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -481,8 +484,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/random-1.2.1/random-1.2.1.tar.gz
-        sha256: 265c768fc5f2ca53cde6a87e706b4448cad474c3deece933c103f24453661457
+        url: https://hackage.haskell.org/package/random-1.2.1.1/random-1.2.1.1.tar.gz
+        sha256: 3e1272f7ed6a4d7bd1712b90143ec326fee9b225789222379fea20a9c90c9b76
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -543,15 +546,15 @@ modules:
         x-checker-data:
           type: html
           url: https://www.hedgewars.org/download.html
-          pattern: 'href="(/download/releases/hedgewars-src-([\d.]+).tar[^"]*)"'
+          pattern: href="(/download/releases/hedgewars-src-([\d.]+).tar[^"]*)"
       - type: patch
         path: hedgewars-appdata.patch
       - type: shell
         commands:
           - sed -i 's|APPEND haskell_flags|\0 "-L/app/lib"|' CMakeLists.txt
-          - | # Fix compatibility with QT 5.15
+          - |
             sed -i '/#include <QSizePolicy>/a #include <QPainterPath>' QTfrontend/ui/page/pagegamestats.cpp
-          - | # https://bugs.freepascal.org/view.php?id=37286
+          - |
             sed -i 's/\(procedure ShiftWorld(Dir: LongInt);\) inline;/\1/' hedgewars/uWorld.pas
     cleanup:
       - /share/pixmaps
