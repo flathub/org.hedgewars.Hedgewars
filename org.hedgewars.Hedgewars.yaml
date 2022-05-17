@@ -36,20 +36,7 @@ modules:
 
   - shared-modules/lua5.1/lua-5.1.5.json
 
-  - name: physicsfs
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-    sources:
-      - type: archive
-        url: https://www.icculus.org/physfs/downloads/physfs-3.0.2.tar.bz2
-        sha256: 304df76206d633df5360e738b138c94e82ccf086e50ba84f456d3f8432f9f863
-        x-checker-data:
-          type: html
-          url: https://www.icculus.org/physfs/downloads/
-          pattern: '>(physfs-([\d.]+)\.tar[^<]*)<'
-    cleanup:
-      - /bin
+  - shared-modules/physfs/physfs.json
 
   - name: imagemagick
     config-opts:
