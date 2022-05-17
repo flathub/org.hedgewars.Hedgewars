@@ -86,8 +86,8 @@ modules:
       - --without-xml
     sources:
       - type: archive
-        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-33.tar.gz
-        sha256: dd18045614c19d11739311b207688c2cd480ed309d466685f1811f7a11df98ee
+        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-34.tar.gz
+        sha256: 6a5bc9627ecff8cc35f99a7e10b395de6c02b4ddce46522e9d6362a90f7a1043
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest
@@ -322,8 +322,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/resourcet-1.2.4.3/resourcet-1.2.4.3.tar.gz
-        sha256: 054152fec5cdc044dd9310c37e548913bcec67ec4e84998a1419a8c067b43b7f
+        url: https://hackage.haskell.org/package/resourcet-1.2.5/resourcet-1.2.5.tar.gz
+        sha256: f67c698a88dda8e25ce3cb6c507c0edf7bb3bf05150cd0ede85e7cdab246492e
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -451,13 +451,16 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/zlib-0.6.2.3/zlib-0.6.2.3.tar.gz
-        sha256: 807f6bddf9cb3c517ce5757d991dde3c7e319953a22c86ee03d74534bd5abc88
+        url: https://hackage.haskell.org/package/zlib-0.6.3.0/zlib-0.6.3.0.tar.gz
+        sha256: 9eaa989ad4534438b5beb51c1d3a4c8f6a088fdff0b259a5394fbf39aaee04da
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
           version-pattern: '>zlib-([\d.]+)<'
           url-template: https://hackage.haskell.org/package/zlib-$version/zlib-$version.tar.gz
+      - type: shell
+        commands:
+          - echo -e 'import Distribution.Simple\nmain = defaultMain' > Setup.hs
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
@@ -481,8 +484,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/random-1.2.1/random-1.2.1.tar.gz
-        sha256: 265c768fc5f2ca53cde6a87e706b4448cad474c3deece933c103f24453661457
+        url: https://hackage.haskell.org/package/random-1.2.1.1/random-1.2.1.1.tar.gz
+        sha256: 3e1272f7ed6a4d7bd1712b90143ec326fee9b225789222379fea20a9c90c9b76
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
