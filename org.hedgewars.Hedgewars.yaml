@@ -357,7 +357,7 @@ modules:
         x-checker-data:
           type: json
           url: https://hackage.haskell.org/package/sandi
-          version-query: 'keys | sort_by(split(".") | map(tonumber))[-1]'
+          version-query: 'to_entries | sort_by([.value=="normal",(.key|split(".")|map(tonumber))[]]) | .[-1].key'
           url-query: '"https://hackage.haskell.org/package/sandi-" + $version + "/sandi-" + $version + ".tar.gz"'
       - type: shell
         commands:
