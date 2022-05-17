@@ -356,7 +356,7 @@ modules:
         sha256: 4940a19fe9c5e9b08a9f139a0806a30b956d007efa973f3763bed3165154afd9
         x-checker-data:
           type: json
-          url: https://hackage.haskell.org/package/sandi
+          url: https://hackage.haskell.org/package/sandi.json
           version-query: 'to_entries | sort_by([.value=="normal",(.key|split(".")|map(tonumber))[]]) | .[-1].key'
           url-query: '"https://hackage.haskell.org/package/sandi-" + $version + "/sandi-" + $version + ".tar.gz"'
       - type: shell
