@@ -75,11 +75,6 @@ modules:
       - type: archive
         url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-35.tar.gz
         sha256: b368a792a3f104c819b496b495348e53ae28b8d15b71c18ced886083822ff30c
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest
-          version-query: '.tag_name'
-          url-query: '"https://github.com/ImageMagick/ImageMagick/archive/refs/tags/" + $version + ".tar.gz"'
     cleanup:
       - '*'
 
