@@ -16,6 +16,8 @@ finish-args:
   - --device=all
   - --share=network
   - --persist=.hedgewars
+  # Qt: Prefer x11 to wayland
+  - --env=QT_QPA_PLATFORM=xcb;wayland
 build-options:
   arch:
     aarch64: # Required by Haskell
