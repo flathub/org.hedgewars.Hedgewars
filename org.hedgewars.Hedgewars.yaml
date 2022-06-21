@@ -73,8 +73,8 @@ modules:
       - --without-xml
     sources:
       - type: archive
-        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-35.tar.gz
-        sha256: b368a792a3f104c819b496b495348e53ae28b8d15b71c18ced886083822ff30c
+        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-39.tar.gz
+        sha256: eb8150517933caad6288a0fbf01e7616bfe95d0f650fac227541668ee10aff05
     cleanup:
       - '*'
 
