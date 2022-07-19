@@ -75,7 +75,7 @@ modules:
       - --without-xml
     sources:
       - type: archive
-        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-43.tar.gz
+        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0.43.tar.gz
         sha256: 62eccb3e8c89acc66c2b10a2bea843b6659a2ddce275c7d2ffee8c34af6114fd
     cleanup:
       - '*'
