@@ -75,8 +75,8 @@ modules:
       - --without-xml
     sources:
       - type: archive
-        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-44.tar.gz
-        sha256: 1532c08c4f047aaf04e2717aac23c6d866d7e17d60a5d2c320ae29874285d49f
+        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-45.tar.gz
+        sha256: 3df6ca6dff15a4e8a20b4593c60285a59e38890440494d91a344e5c0e2bb3eec
     cleanup:
       - '*'
 
@@ -225,16 +225,13 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/split-0.2.3.4/split-0.2.3.4.tar.gz
-        sha256: 271fe5104c9f40034aa9a1aad6269bcecc9454bc5a57c247e69e17de996c1f2a
+        url: https://hackage.haskell.org/package/split-0.2.3.5/split-0.2.3.5.tar.gz
+        sha256: bf8aa8d610354a2b576946a6c838251ec5988c8374100638e6b2604513b93159
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
           version-pattern: '>split-([\d.]+)<'
           url-template: https://hackage.haskell.org/package/split-$version/split-$version.tar.gz
-      - type: shell
-        commands:
-          - sed -i 's/< *4\.15/<5/' *.cabal
     build-commands: *haskell_package_build_commands
     cleanup:
       - '*'
