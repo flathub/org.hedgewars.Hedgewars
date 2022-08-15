@@ -1,6 +1,6 @@
 app-id: org.hedgewars.Hedgewars
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm13
@@ -91,7 +91,7 @@ modules:
         x-checker-data:
           type: html
           url: https://www.freepascal.org/download.html
-          version-pattern: 'The latest release is <b>([^<]+)</b>'
+          version-pattern: The latest release is <b>([^<]+)</b>
           url-template: https://sourceforge.net/projects/freepascal/files/Linux/$version/fpc-$version.x86_64-linux.tar
       - type: archive
         url: https://sourceforge.net/projects/freepascal/files/Linux/3.2.2/fpc-3.2.2.aarch64-linux.tar
@@ -101,12 +101,12 @@ modules:
         x-checker-data:
           type: html
           url: https://www.freepascal.org/download.html
-          version-pattern: 'The latest release is <b>([^<]+)</b>'
+          version-pattern: The latest release is <b>([^<]+)</b>
           url-template: https://sourceforge.net/projects/freepascal/files/Linux/$version/fpc-$version.aarch64-linux.tar
     build-commands:
       - install -d /app/bin
       - printf '%s\n' /app n n | ./install.sh
-      - | # Install config
+      - |
         LIBDIR="/app/lib/fpc/$(fpc -iV)"
         "${LIBDIR}/samplecfg" "${LIBDIR}" /app/lib/fpc/etc
     cleanup:
@@ -120,8 +120,9 @@ modules:
         x-checker-data:
           type: json
           url: https://api.github.com/repos/numactl/numactl/releases/latest
-          version-query: '.tag_name'
-          url-query: '.assets[] | select(.name == "numactl-" + ($version | sub("^v"; "")) + ".tar.gz").browser_download_url'
+          version-query: .tag_name
+          url-query: .assets[] | select(.name == "numactl-" + ($version | sub("^v";
+            "")) + ".tar.gz").browser_download_url
     cleanup:
       - /bin
 
@@ -225,8 +226,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/split-0.2.3.4/split-0.2.3.4.tar.gz
-        sha256: 271fe5104c9f40034aa9a1aad6269bcecc9454bc5a57c247e69e17de996c1f2a
+        url: https://hackage.haskell.org/package/split-0.2.3.5/split-0.2.3.5.tar.gz
+        sha256: bf8aa8d610354a2b576946a6c838251ec5988c8374100638e6b2604513b93159
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -341,8 +342,10 @@ modules:
         x-checker-data:
           type: json
           url: https://hackage.haskell.org/package/sandi.json
-          version-query: 'to_entries | sort_by([.value=="normal",(.key|split(".")|map(tonumber))[]]) | .[-1].key'
-          url-query: '"https://hackage.haskell.org/package/sandi-" + $version + "/sandi-" + $version + ".tar.gz"'
+          version-query: to_entries | sort_by([.value=="normal",(.key|split(".")|map(tonumber))[]])
+            | .[-1].key
+          url-query: '"https://hackage.haskell.org/package/sandi-" + $version + "/sandi-"
+            + $version + ".tar.gz"'
       - type: shell
         commands:
           - echo -e 'import Distribution.Simple\nmain = defaultMain' > Setup.hs
@@ -530,15 +533,15 @@ modules:
         x-checker-data:
           type: html
           url: https://www.hedgewars.org/download.html
-          pattern: 'href="(/download/releases/hedgewars-src-([\d.]+).tar[^"]*)"'
+          pattern: href="(/download/releases/hedgewars-src-([\d.]+).tar[^"]*)"
       - type: patch
         path: hedgewars-appdata.patch
       - type: shell
         commands:
           - sed -i 's|APPEND haskell_flags|\0 "-L/app/lib"|' CMakeLists.txt
-          - | # Fix compatibility with QT 5.15
+          - |
             sed -i '/#include <QSizePolicy>/a #include <QPainterPath>' QTfrontend/ui/page/pagegamestats.cpp
-          - | # https://bugs.freepascal.org/view.php?id=37286
+          - |
             sed -i 's/\(procedure ShiftWorld(Dir: LongInt);\) inline;/\1/' hedgewars/uWorld.pas
     cleanup:
       - /share/pixmaps
