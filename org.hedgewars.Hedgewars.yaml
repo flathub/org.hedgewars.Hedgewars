@@ -516,7 +516,12 @@ modules:
     post-install:
       - |
         for res in 16 32 48 64 128 256 512; do
-          convert +set date:create +set date:modify misc/hedgewars.png -resize ${res}x${res} hedgewars_${res}.png || exit 1
+          if [ ${res} -le 32 ]; then
+            src=misc/hedgewars_ico.png
+          else
+            src=misc/hedgewars.png
+          fi
+          convert +set date:create +set date:modify "${src}" -resize ${res}x${res} hedgewars_${res}.png || exit 1
           install -Dm0644 hedgewars_${res}.png /app/share/icons/hicolor/${res}x${res}/apps/hedgewars.png || exit 1
         done
     sources:
