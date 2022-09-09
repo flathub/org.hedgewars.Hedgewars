@@ -115,13 +115,13 @@ modules:
   - name: numa
     sources:
       - type: archive
-        url: https://github.com/numactl/numactl/releases/download/v2.0.14/numactl-2.0.14.tar.gz
-        sha256: 826bd148c1b6231e1284e42a4db510207747484b112aee25ed6b1078756bcff6
+        url: https://github.com/numactl/numactl/archive/refs/tags/v2.0.15.tar.gz
+        sha256: 1508bb02f56f1b9376243980ba96291856ba083e7a3480fdcb0fbf11ff01d6fa
         x-checker-data:
           type: json
           url: https://api.github.com/repos/numactl/numactl/releases/latest
           version-query: '.tag_name'
-          url-query: '.assets[] | select(.name == "numactl-" + ($version | sub("^v"; "")) + ".tar.gz").browser_download_url'
+          url-query: '"https://github.com/numactl/numactl/archive/refs/tags/" + $version + ".tar.gz"'
     cleanup:
       - /bin
 
@@ -533,7 +533,6 @@ modules:
         path: hedgewars-appdata.patch
       - type: shell
         commands:
-          - sed -i 's|APPEND haskell_flags|\0 "-L/app/lib"|' CMakeLists.txt
           - | # Fix compatibility with QT 5.15
             sed -i '/#include <QSizePolicy>/a #include <QPainterPath>' QTfrontend/ui/page/pagegamestats.cpp
           - | # https://bugs.freepascal.org/view.php?id=37286
