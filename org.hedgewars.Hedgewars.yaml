@@ -1,6 +1,6 @@
 app-id: org.hedgewars.Hedgewars
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm13
@@ -91,7 +91,7 @@ modules:
         x-checker-data:
           type: html
           url: https://www.freepascal.org/download.html
-          version-pattern: 'The latest release is <b>([^<]+)</b>'
+          version-pattern: The latest release is <b>([^<]+)</b>
           url-template: https://sourceforge.net/projects/freepascal/files/Linux/$version/fpc-$version.x86_64-linux.tar
       - type: archive
         url: https://sourceforge.net/projects/freepascal/files/Linux/3.2.2/fpc-3.2.2.aarch64-linux.tar
@@ -101,12 +101,12 @@ modules:
         x-checker-data:
           type: html
           url: https://www.freepascal.org/download.html
-          version-pattern: 'The latest release is <b>([^<]+)</b>'
+          version-pattern: The latest release is <b>([^<]+)</b>
           url-template: https://sourceforge.net/projects/freepascal/files/Linux/$version/fpc-$version.aarch64-linux.tar
     build-commands:
       - install -d /app/bin
       - printf '%s\n' /app n n | ./install.sh
-      - | # Install config
+      - |
         LIBDIR="/app/lib/fpc/$(fpc -iV)"
         "${LIBDIR}/samplecfg" "${LIBDIR}" /app/lib/fpc/etc
     cleanup:
@@ -115,13 +115,14 @@ modules:
   - name: numa
     sources:
       - type: archive
-        url: https://github.com/numactl/numactl/archive/refs/tags/v2.0.15.tar.gz
-        sha256: 1508bb02f56f1b9376243980ba96291856ba083e7a3480fdcb0fbf11ff01d6fa
+        url: https://github.com/numactl/numactl/archive/refs/tags/v2.0.16.tar.gz
+        sha256: a35c3bdb3efab5c65927e0de5703227760b1101f5e27ab741d8f32b3d5f0a44c
         x-checker-data:
           type: json
           url: https://api.github.com/repos/numactl/numactl/releases/latest
-          version-query: '.tag_name'
-          url-query: '"https://github.com/numactl/numactl/archive/refs/tags/" + $version + ".tar.gz"'
+          version-query: .tag_name
+          url-query: '"https://github.com/numactl/numactl/archive/refs/tags/" + $version
+            + ".tar.gz"'
     cleanup:
       - /bin
 
@@ -338,8 +339,10 @@ modules:
         x-checker-data:
           type: json
           url: https://hackage.haskell.org/package/sandi.json
-          version-query: 'to_entries | sort_by([.value=="normal",(.key|split(".")|map(tonumber))[]]) | .[-1].key'
-          url-query: '"https://hackage.haskell.org/package/sandi-" + $version + "/sandi-" + $version + ".tar.gz"'
+          version-query: to_entries | sort_by([.value=="normal",(.key|split(".")|map(tonumber))[]])
+            | .[-1].key
+          url-query: '"https://hackage.haskell.org/package/sandi-" + $version + "/sandi-"
+            + $version + ".tar.gz"'
       - type: shell
         commands:
           - echo -e 'import Distribution.Simple\nmain = defaultMain' > Setup.hs
@@ -532,7 +535,7 @@ modules:
         x-checker-data:
           type: html
           url: https://www.hedgewars.org/download.html
-          pattern: 'href="(/download/releases/hedgewars-src-([\d.]+).tar[^"]*)"'
+          pattern: href="(/download/releases/hedgewars-src-([\d.]+).tar[^"]*)"
       - type: patch
         path: hedgewars-appdata.patch
     cleanup:
