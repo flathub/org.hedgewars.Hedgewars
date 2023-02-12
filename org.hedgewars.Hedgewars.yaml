@@ -212,8 +212,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/hashable-1.4.1.0/hashable-1.4.1.0.tar.gz
-        sha256: e1b305c280e66ad827edeaedd6933b9fc4174f626882877eab2a08344e665e87
+        url: https://hackage.haskell.org/package/hashable-1.4.2.0/hashable-1.4.2.0.tar.gz
+        sha256: 1b4000ea82b81f69d46d0af4152c10c6303873510738e24cfc4767760d30e3f8
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -287,8 +287,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/unliftio-core-0.2.0.1/unliftio-core-0.2.0.1.tar.gz
-        sha256: 919f0d1297ea2f5373118553c1df2a9405d8b9e31a8307e829da67d4953c299a
+        url: https://hackage.haskell.org/package/unliftio-core-0.2.1.0/unliftio-core-0.2.1.0.tar.gz
+        sha256: 99384cba8d56d9d61b85e38a313a93ebcdb78be6566367f0930ef580597fe3e3
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
