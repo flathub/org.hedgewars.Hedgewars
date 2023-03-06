@@ -3,7 +3,7 @@ runtime: org.kde.Platform
 runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm14
+  - org.freedesktop.Sdk.Extension.llvm15
 command: hedgewars
 rename-desktop-file: hedgewars.desktop
 rename-icon: hedgewars
@@ -21,8 +21,8 @@ finish-args:
 build-options:
   arch:
     aarch64: # Required by Haskell
-      append-path: /usr/lib/sdk/llvm14/bin
-      append-ld-library-path: /usr/lib/sdk/llvm14/lib
+      append-path: /usr/lib/sdk/llvm15/bin
+      append-ld-library-path: /usr/lib/sdk/llvm15/lib
 cleanup:
   - '*.a'
   - '*.la'
