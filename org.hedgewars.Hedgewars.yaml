@@ -132,8 +132,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://downloads.haskell.org/~ghc/9.4.5/ghc-9.4.5-x86_64-deb10-linux.tar.xz
-        sha256: a44c39c4cc9a147de6dd31762995a9e47467cc91757800d80667b8cd60a9b226
+        url: https://downloads.haskell.org/~ghc/9.4.6/ghc-9.4.6-x86_64-deb10-linux.tar.xz
+        sha256: 6061c20ff4e154e81944dfc9f37afff5aaa05ce51ad25db3425ff85bb85a92a3
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -142,8 +142,8 @@ modules:
         only-arches:
           - x86_64
       - type: archive
-        url: https://downloads.haskell.org/~ghc/9.4.5/ghc-9.4.5-aarch64-deb10-linux.tar.xz
-        sha256: ecf16ec503e739e727174b29e5acbe4cf0c54737dd4d5eda046e09323f9ee248
+        url: https://downloads.haskell.org/~ghc/9.4.6/ghc-9.4.6-aarch64-deb10-linux.tar.xz
+        sha256: b27e4e4d760216457c20fdce3ec419e1bac905608e6577c2c2fa15f4a3779370
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -301,8 +301,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/bitvec-1.1.4.0/bitvec-1.1.4.0.tar.gz
-        sha256: 68f0b1e01604ca8bdeaef47b3621faec456d6f76d6820a321eccd4d3749454a8
+        url: https://hackage.haskell.org/package/bitvec-1.1.5.0/bitvec-1.1.5.0.tar.gz
+        sha256: 83d27cee5be1d5342ddbf39999d0c8ea54cb433d0891eea5471fbfaa29f8dec5
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
