@@ -40,46 +40,6 @@ modules:
 
   - shared-modules/physfs/physfs.json
 
-  - name: imagemagick
-    config-opts:
-      - --disable-dependency-tracking
-      - --enable-static=no
-      - --disable-docs
-      - --without-magick-plus-plus
-      - --without-bzlib
-      - --with-x=no
-      - --without-zlib
-      - --without-zstd
-      - --without-dps
-      - --without-fftw
-      - --without-flif
-      - --without-fpx
-      - --without-djvu
-      - --without-fontconfig
-      - --without-freetype
-      - --without-raqm
-      - --with-gvc=no
-      - --without-heic
-      - --without-jbig
-      - --without-jpeg
-      - --without-lcms
-      - --without-openjp2
-      - --without-lqr
-      - --without-lzma
-      - --without-openexr
-      - --without-pango
-      - --without-raw
-      - --without-tiff
-      - --without-webp
-      - --with-wmf=no
-      - --without-xml
-    sources:
-      - type: archive
-        url: https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-62.tar.gz
-        sha256: d282117bc6d0e91ad1ad685d096623b96ed8e229f911c891d83277b350ef884a
-    cleanup:
-      - '*'
-
   - name: freepascal
     buildsystem: simple
     sources:
@@ -592,14 +552,14 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     post-install:
       - |
-        for res in 16 32 48 64 128 256 512; do
-          if [ ${res} -le 32 ]; then
+        for s in 16 32 48 64 128 256 512; do
+          if [ ${s} -le 32 ]; then
             src=misc/hedgewars_ico.png
           else
             src=misc/hedgewars.png
           fi
-          convert +set date:create +set date:modify "${src}" -resize ${res}x${res} hedgewars_${res}.png || exit 1
-          install -Dm0644 hedgewars_${res}.png /app/share/icons/hicolor/${res}x${res}/apps/hedgewars.png || exit 1
+          gst-launch-1.0 filesrc location="${src}" ! pngdec ! videoscale ! video/x-raw,width=${s},height=${s} ! pngenc ! filesink location="icon.png" || exit 1
+          install -Dm0644 icon.png /app/share/icons/hicolor/${s}x${s}/apps/hedgewars.png || exit 1
         done
     sources:
       - type: archive
