@@ -132,8 +132,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://downloads.haskell.org/~ghc/9.4.6/ghc-9.4.6-x86_64-deb10-linux.tar.xz
-        sha256: 6061c20ff4e154e81944dfc9f37afff5aaa05ce51ad25db3425ff85bb85a92a3
+        url: https://downloads.haskell.org/~ghc/9.4.7/ghc-9.4.7-x86_64-deb10-linux.tar.xz
+        sha256: 6b5b939d20b47475358993210738578071005669500810f28746bbd856ed878b
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
