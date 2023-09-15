@@ -552,14 +552,14 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     post-install:
       - |
-        for s in 16 32 48 64 128 256 512; do
-          if [ ${s} -le 32 ]; then
+        for res in 16 32 48 64 128 256 512; do
+          if [ ${res} -le 32 ]; then
             src=misc/hedgewars_ico.png
           else
             src=misc/hedgewars.png
           fi
-          gst-launch-1.0 filesrc location="${src}" ! pngdec ! videoscale ! video/x-raw,width=${s},height=${s} ! pngenc ! filesink location="icon.png" || exit 1
-          install -Dm0644 icon.png /app/share/icons/hicolor/${s}x${s}/apps/hedgewars.png || exit 1
+          gst-launch-1.0 filesrc location="${src}" ! pngdec ! videoscale ! video/x-raw,width=${res},height=${res} ! pngenc ! filesink location=icon_${res}.png || exit 1
+          install -Dm0644 icon_${res}.png /app/share/icons/hicolor/${res}x${res}/apps/hedgewars.png || exit 1
         done
     sources:
       - type: archive
