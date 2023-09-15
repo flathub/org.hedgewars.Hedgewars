@@ -92,8 +92,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://downloads.haskell.org/~ghc/9.4.6/ghc-9.4.6-x86_64-deb10-linux.tar.xz
-        sha256: 6061c20ff4e154e81944dfc9f37afff5aaa05ce51ad25db3425ff85bb85a92a3
+        url: https://downloads.haskell.org/~ghc/9.4.7/ghc-9.4.7-x86_64-deb10-linux.tar.xz
+        sha256: 6b5b939d20b47475358993210738578071005669500810f28746bbd856ed878b
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -102,8 +102,8 @@ modules:
         only-arches:
           - x86_64
       - type: archive
-        url: https://downloads.haskell.org/~ghc/9.4.6/ghc-9.4.6-aarch64-deb10-linux.tar.xz
-        sha256: b27e4e4d760216457c20fdce3ec419e1bac905608e6577c2c2fa15f4a3779370
+        url: https://downloads.haskell.org/~ghc/9.4.7/ghc-9.4.7-aarch64-deb10-linux.tar.xz
+        sha256: 05896fc4bc52c117d281eac9c621c6c3a0b14f9f9eed5e42cce5e1c4485c7623
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
