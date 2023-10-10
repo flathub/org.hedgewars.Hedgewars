@@ -162,8 +162,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/vector-0.13.0.0/vector-0.13.0.0.tar.gz
-        sha256: c5d3167d15e12f52e00879ddf304a591672a74e369cc47bc5c7fa1d5a8d15b4f
+        url: https://hackage.haskell.org/package/vector-0.13.1.0/vector-0.13.1.0.tar.gz
+        sha256: 63f272279eab8ab9411a0fffb1252ac309b297313f8e33be9ebbc2f981edecee
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -481,8 +481,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/splitmix-0.1.0.4/splitmix-0.1.0.4.tar.gz
-        sha256: 6d065402394e7a9117093dbb4530a21342c9b1e2ec509516c8a8d0ffed98ecaa
+        url: https://hackage.haskell.org/package/splitmix-0.1.0.5/splitmix-0.1.0.5.tar.gz
+        sha256: 9df07a9611ef45f1b1258a0b412f4d02c920248f69d2e2ce8ccda328f7e13002
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
