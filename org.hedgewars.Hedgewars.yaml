@@ -82,7 +82,7 @@ modules:
         x-checker-data:
           type: html
           url: https://ffmpeg.org/releases/
-          pattern: ">(ffmpeg-(4\\.[\\d.]+)\\.tar\\.xz)<"
+          pattern: '>(ffmpeg-(4\.[\d.]+)\.tar\.xz)<'
       - type: patch
         path: ffmpeg-binutils.patch
 
@@ -101,8 +101,8 @@ modules:
           url-template: https://sourceforge.net/projects/freepascal/files/Linux/$version/fpc-$version.x86_64-linux.tar
       - type: archive
         # Workaround: The stable version 3.2.2 is incompatible with runtime 23.08 on aarch64. Use the development snapshot until 3.2.4 is released.
-        url: http://downloads.freepascal.org/fpc/snapshot/v32/aarch64-linux/fpc-3.2.3.aarch64-linux.tar.gz
-        sha256: 372aef26f541cda402a36daebfb965d4781dc1974a6c5867767b48c36bed1961
+        url: https://downloads.freepascal.org/fpc/snapshot/v32/aarch64-linux/fpc-3.2.3.aarch64-linux.tar.gz
+        sha256: e23337d93852bb36e06248531f64a044352eefed3ac39bf5831df33bbc98f939
         strip-components: 0
         only-arches:
           - aarch64
@@ -129,22 +129,22 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://downloads.haskell.org/~ghc/9.4.7/ghc-9.4.7-x86_64-deb10-linux.tar.xz
-        sha256: 6b5b939d20b47475358993210738578071005669500810f28746bbd856ed878b
+        url: https://downloads.haskell.org/~ghc/9.4.8/ghc-9.4.8-x86_64-deb10-linux.tar.xz
+        sha256: fc77eaae5b89f29177bf159fd95ce438066ec64a46bf69df61b267102afdb10e
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
-          version-pattern: '>ghc-([\d.]+)<'
+          version-pattern: \(ghc-([\d.]+)\)
           url-template: https://downloads.haskell.org/~ghc/$version/ghc-$version-x86_64-deb10-linux.tar.xz
         only-arches:
           - x86_64
       - type: archive
-        url: https://downloads.haskell.org/~ghc/9.4.7/ghc-9.4.7-aarch64-deb10-linux.tar.xz
-        sha256: 05896fc4bc52c117d281eac9c621c6c3a0b14f9f9eed5e42cce5e1c4485c7623
+        url: https://downloads.haskell.org/~ghc/9.4.8/ghc-9.4.8-aarch64-deb10-linux.tar.xz
+        sha256: 278e287e1ee624712b9c6d7803d1cf915ca1cce56e013b0a16215eb8dfeb1531
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
-          version-pattern: '>ghc-([\d.]+)<'
+          version-pattern: \(ghc-([\d.]+)\)
           url-template: https://downloads.haskell.org/~ghc/$version/ghc-$version-aarch64-deb10-linux.tar.xz
         only-arches:
           - aarch64
