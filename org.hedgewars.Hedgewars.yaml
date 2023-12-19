@@ -125,7 +125,7 @@ modules:
       - '*'
 
   - name: haskell
-    # Using LTS
+    # Using LTS-21
     buildsystem: simple
     sources:
       - type: archive
@@ -133,7 +133,7 @@ modules:
         sha256: fc77eaae5b89f29177bf159fd95ce438066ec64a46bf69df61b267102afdb10e
         x-checker-data:
           type: html
-          url: https://www.stackage.org/lts
+          url: https://www.stackage.org/lts-21
           version-pattern: \(ghc-([\d.]+)\)
           url-template: https://downloads.haskell.org/~ghc/$version/ghc-$version-x86_64-deb10-linux.tar.xz
         only-arches:
@@ -143,7 +143,7 @@ modules:
         sha256: 278e287e1ee624712b9c6d7803d1cf915ca1cce56e013b0a16215eb8dfeb1531
         x-checker-data:
           type: html
-          url: https://www.stackage.org/lts
+          url: https://www.stackage.org/lts-21
           version-pattern: \(ghc-([\d.]+)\)
           url-template: https://downloads.haskell.org/~ghc/$version/ghc-$version-aarch64-deb10-linux.tar.xz
         only-arches:
