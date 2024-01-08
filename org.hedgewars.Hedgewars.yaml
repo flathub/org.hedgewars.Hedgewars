@@ -180,8 +180,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/vector-stream-0.1.0.0/vector-stream-0.1.0.0.tar.gz
-        sha256: a888210f6467f155090653734be5cc920406a07227e0d3adb59096716fdb806c
+        url: https://hackage.haskell.org/package/vector-stream-0.1.0.1/vector-stream-0.1.0.1.tar.gz
+        sha256: d0f507334bdea5431a2f07f525a97f29e76522c32210f5de6d5a2b4f1d42bf7c
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
