@@ -536,8 +536,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/random-1.2.1.1/random-1.2.1.1.tar.gz
-        sha256: 3e1272f7ed6a4d7bd1712b90143ec326fee9b225789222379fea20a9c90c9b76
+        url: https://hackage.haskell.org/package/random-1.2.1.2/random-1.2.1.2.tar.gz
+        sha256: 790f4dc2d2327c453ff6aac7bf15399fd123d55e927935f68f84b5df42d9a4b4
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
