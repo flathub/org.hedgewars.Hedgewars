@@ -265,8 +265,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/split-0.2.4/split-0.2.4.tar.gz
-        sha256: 749fe300d0f30eb19b28c2633b3330d5565f642e29d5397974507d796beb31b3
+        url: https://hackage.haskell.org/package/split-0.2.5/split-0.2.5.tar.gz
+        sha256: 52da404e8397c1ab238354c8d4fd9a7e9c5cac8849cc2ce2e45facc85e74a913
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -280,8 +280,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/unordered-containers-0.2.19.1/unordered-containers-0.2.19.1.tar.gz
-        sha256: 1b27bec5e0d522b27a6029ebf4c4a6d40acbc083c787008e32fb55c4b1d128d2
+        url: https://hackage.haskell.org/package/unordered-containers-0.2.20/unordered-containers-0.2.20.tar.gz
+        sha256: d9cfb287cf00592d39dc9c3cac8b99627ea08f2c01798e70130fc39f7c90f11d
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -334,8 +334,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/mono-traversable-1.0.15.3/mono-traversable-1.0.15.3.tar.gz
-        sha256: 98b220f3313d74227a4249210c8818e839678343e62b3ebb1b8c867cf2b974b7
+        url: https://hackage.haskell.org/package/mono-traversable-1.0.17.0/mono-traversable-1.0.17.0.tar.gz
+        sha256: 25d8f9b860bc6335d3d213f3392ab58d4041e28127874ea18525412f184cd32f
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
@@ -536,8 +536,8 @@ modules:
     buildsystem: simple
     sources:
       - type: archive
-        url: https://hackage.haskell.org/package/random-1.2.1.1/random-1.2.1.1.tar.gz
-        sha256: 3e1272f7ed6a4d7bd1712b90143ec326fee9b225789222379fea20a9c90c9b76
+        url: https://hackage.haskell.org/package/random-1.2.1.2/random-1.2.1.2.tar.gz
+        sha256: 790f4dc2d2327c453ff6aac7bf15399fd123d55e927935f68f84b5df42d9a4b4
         x-checker-data:
           type: html
           url: https://www.stackage.org/lts
