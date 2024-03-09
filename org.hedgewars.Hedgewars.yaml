@@ -102,7 +102,7 @@ modules:
       - type: archive
         # Workaround: The stable version 3.2.2 is incompatible with runtime 23.08 on aarch64. Use the development snapshot until 3.2.4 is released.
         url: https://downloads.freepascal.org/fpc/snapshot/v32/aarch64-linux/fpc-3.2.3.aarch64-linux.tar.gz
-        sha256: d537ef4b83b91232d3326ea8e6b2a4b86fb57350744f1f3e1aaf7d7f3cb548f5
+        sha256: ae332555b2e836eee1cc7355e57ef573ba3ba231c82b8681ca4bb2348db94a95
         strip-components: 0
         only-arches:
           - aarch64
