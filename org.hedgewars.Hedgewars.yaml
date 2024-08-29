@@ -83,8 +83,6 @@ modules:
           type: html
           url: https://ffmpeg.org/releases/
           pattern: '>(ffmpeg-(4\.[\d.]+)\.tar\.xz)<'
-      - type: patch
-        path: ffmpeg-binutils.patch
 
   - name: freepascal
     buildsystem: simple
