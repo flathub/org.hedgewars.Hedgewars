@@ -99,21 +99,11 @@ modules:
           url-template: https://sourceforge.net/projects/freepascal/files/Linux/$version/fpc-$version.x86_64-linux.tar
       - type: archive
         # Workaround: The stable version 3.2.2 is incompatible with runtime 23.08 on aarch64. Use the development snapshot until 3.2.4 is released.
-        url: https://downloads.freepascal.org/fpc/snapshot/v32/aarch64-linux/fpc-3.2.3.aarch64-linux.tar.gz
-        sha256: 4919c8c37a3529b532249467aecc317cc2fbb4ed98a00c71bef336e5d0972c13
-        strip-components: 0
-        only-arches:
-          - aarch64
-      - type: script
-        commands:
-          - set -o errexit
-          - cp -a bin lib share /app
-          - ln -s ../$(ls -d lib/fpc/*/ppc*) /app/bin
-        dest-filename: install.sh
+        url: https://downloads.freepascal.org/fpc/beta/3.2.4-rc1/aarch64-linux/fpc-3.2.4-rc1.aarch64-linux.tar
+        sha256: 2e0a2a4c2a28e5a19357ee6c447180212e0e31ce067eceb4e21cd385116daab4
         only-arches:
           - aarch64
     build-commands:
-      - install -d /app/bin
       - printf '%s\n' /app n n | ./install.sh
       # Install config
       - |
