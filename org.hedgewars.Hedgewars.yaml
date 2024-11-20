@@ -11,7 +11,8 @@ finish-args:
   - --share=ipc
   - --socket=wayland
   - --socket=pulseaudio
-  - --device=all
+  - --device=dri
+  - --device=input
   - --share=network
   - --persist=.hedgewars
   # Qt: Prefer x11 to wayland
