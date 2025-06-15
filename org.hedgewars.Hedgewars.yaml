@@ -35,7 +35,7 @@ modules:
 
   - name: ffmpeg-4
     build-options:
-      cflags: -Wno-int-conversion
+      cflags: -Wno-error=int-conversion
     config-opts:
       # See https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/master/elements/include/ffmpeg.yml
       - --disable-stripping
@@ -100,7 +100,7 @@ modules:
           version-pattern: The latest release is <b>([^<]+)</b>
           url-template: https://sourceforge.net/projects/freepascal/files/Linux/$version/fpc-$version.x86_64-linux.tar
       - type: archive
-        # Workaround: The stable version 3.2.2 is incompatible with runtime 23.08 on aarch64. Use the development snapshot until 3.2.4 is released.
+        # Workaround: The stable version 3.2.2 is incompatible with runtime 24.08 on aarch64. Use the development snapshot until 3.2.4 is released.
         url: https://downloads.freepascal.org/fpc/beta/3.2.4-rc1/aarch64-linux/fpc-3.2.4-rc1.aarch64-linux.tar
         sha256: 2e0a2a4c2a28e5a19357ee6c447180212e0e31ce067eceb4e21cd385116daab4
         only-arches:
