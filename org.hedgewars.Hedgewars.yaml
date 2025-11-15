@@ -1,6 +1,6 @@
 app-id: org.hedgewars.Hedgewars
 runtime: org.kde.Platform
-runtime-version: 5.15-24.08
+runtime-version: 5.15-25.08
 sdk: org.kde.Sdk
 command: hedgewars
 rename-desktop-file: hedgewars.desktop
@@ -33,6 +33,10 @@ modules:
 
   - shared-modules/physfs/physfs.json
 
+  - shared-modules/SDL2/SDL2_image.json
+
+  - shared-modules/SDL2/SDL2_ttf.json
+
   - name: freepascal
     buildsystem: simple
     sources:
@@ -47,7 +51,7 @@ modules:
           version-pattern: The latest release is <b>([^<]+)</b>
           url-template: https://sourceforge.net/projects/freepascal/files/Linux/$version/fpc-$version.x86_64-linux.tar
       - type: archive
-        # Workaround: The stable version 3.2.2 is incompatible with runtime 24.08 on aarch64. Use the development snapshot until 3.2.4 is released.
+        # Workaround: The stable version 3.2.2 is incompatible with runtime 25.08 on aarch64. Use the development snapshot until 3.2.4 is released.
         url: https://downloads.freepascal.org/fpc/beta/3.2.4-rc1/aarch64-linux/fpc-3.2.4-rc1.aarch64-linux.tar
         sha256: 2e0a2a4c2a28e5a19357ee6c447180212e0e31ce067eceb4e21cd385116daab4
         only-arches:
